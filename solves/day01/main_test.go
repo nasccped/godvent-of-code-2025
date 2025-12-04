@@ -17,11 +17,11 @@ R14
 L82`
 
 func TestPart1(t *testing.T) {
-	assertion := asrt.NewAssertion(Part1(INPUT), t)
+	assertion := asrt.NewAssertion(Part1(input), t)
 	assertion.ExpectsEq(3).Assert()
 }
 
 func TestPart2(t *testing.T) {
-	assertion := asrt.NewAssertion(Part2(INPUT), t)
+	assertion := asrt.NewAssertion(Part2(input), t)
 	assertion.ExpectsEq(6).Assert()
 }
