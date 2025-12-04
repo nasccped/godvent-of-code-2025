@@ -75,11 +75,11 @@ func (a *Assertion[T]) Assert() {
 	switch *a.assertMode {
 	case assertEq:
 		if a.input != *a.other {
-			a.test.Errorf(message)
+			a.test.Errorf("%s", message)
 		}
 	case assertNeq:
 		if a.input == *a.other {
-			a.test.Errorf(message)
+			a.test.Errorf("%s", message)
 		}
 	default:
 		panic("undefined variant")
