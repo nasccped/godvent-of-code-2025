@@ -6,6 +6,7 @@ import (
 	c "github.com/nasccped/godvent-of-code-2025/internal/color"
 	"github.com/nasccped/godvent-of-code-2025/solves/day01"
 	"github.com/nasccped/godvent-of-code-2025/solves/day02"
+	"github.com/nasccped/godvent-of-code-2025/solves/day03"
 	"os"
 	"strconv"
 	"strings"
@@ -15,6 +16,7 @@ import (
 var mapping [][]func(string) int = [][]func(string) int{
 	{day01.Part1, day01.Part2},
 	{day02.Part1, day02.Part2},
+	{day03.Part1, day03.Part2},
 }
 
 // Remove leading whitespaces from a string input.
