@@ -1,6 +1,8 @@
 package day06
 
 import (
+	"bytes"
+	// "fmt"
 	"strconv"
 	"strings"
 )
@@ -62,5 +64,46 @@ func Part1(input string) int {
 }
 
 func Part2(input string) int {
-	return 0
+	rows := strings.Split(input, "\n")
+	values := rows[:len(rows)-1]
+	opers := mapSlice(filterSlice(strings.Split(rows[len(rows)-1], " "), func(item string) bool {
+		return item != " " && item != ""
+	}), func(item string) byte {
+		return item[0]
+	})
+	count := 0
+	numIndex := len(filterSlice(strings.Split(values[0], " "), func(item string) bool {
+		return item != " " && item != ""
+	})) - 1
+	tempNum := 0
+	for x := len(values[0]) - 1; x >= 0; x-- {
+		var current bytes.Buffer
+		for y := 0; y < len(values); y++ {
+			if temp := values[y][x]; temp != ' ' {
+				current.WriteByte(temp)
+			}
+		}
+		asStr := current.String()
+		switch {
+		case asStr == "":
+			count += tempNum
+			tempNum = 0
+			numIndex--
+		default:
+			v, _ := strconv.Atoi(asStr)
+			if tempNum == 0 && opers[numIndex] == '*' {
+				tempNum = v
+			} else if opers[numIndex] == '*' {
+				tempNum *= v
+			} else {
+				tempNum += v
+			}
+			if x == 0 {
+				count += tempNum
+				tempNum = 0
+				numIndex--
+			}
+		}
+	}
+	return count
 }

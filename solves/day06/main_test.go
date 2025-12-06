@@ -17,5 +17,5 @@ func TestPart1(t *testing.T) {
 
 func TestPart2(t *testing.T) {
 	assertion := asrt.NewAssertion(Part2(input), t)
-	assertion.ExpectsEq(0).Assert()
+	assertion.ExpectsEq(3263827).Assert()
 }
